@@ -2,7 +2,7 @@
 
 FROM elasticsearch
 
-ENV PHONETIC_PLUGIN_VERSION 2.7.0
-RUN echo "script.groovy.sandbox.enabled: true" >> /usr/share/elasticsearch/config/elasticsearch.yml
+ADD config.yml /tmp/config.yml
+RUN cat /tmp/config.yml >> /usr/share/elasticsearch/config/elasticsearch.yml
 
-CMD ["sh", "-c", "/usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-phonetic/$PHONETIC_PLUGIN_VERSION && /usr/share/elasticsearch/bin/elasticsearch -Des.script.disable_dynamic=false"]
+RUN /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-phonetic/2.7.0
