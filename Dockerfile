@@ -1,6 +1,6 @@
 # Dockerfile to build Elasticsearch with our required plugins
 
-FROM elasticsearch
+FROM elasticsearch:1.7
 
 ADD config.yml /tmp/config.yml
 RUN cat /tmp/config.yml >> /usr/share/elasticsearch/config/elasticsearch.yml
